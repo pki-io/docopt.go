@@ -66,6 +66,13 @@ func Parse(doc string, argv []string, help bool, version string,
 	return args, err
 }
 
+// Expose parse function without further logic
+func ParseRaw(doc string, argv []string, help bool, version string,
+	optionsFirst bool, exit ...bool) (map[string]interface{}, string, error) {
+
+	return parse(doc, argv, help, version, optionsFirst)
+}
+
 // parse and return a map of args, output and all errors
 func parse(doc string, argv []string, help bool, version string, optionsFirst bool) (args map[string]interface{}, output string, err error) {
 	if argv == nil && len(os.Args) > 1 {
